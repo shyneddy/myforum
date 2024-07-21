@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2024 at 05:46 PM
+-- Generation Time: Jul 22, 2024 at 01:50 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.1.25
 
@@ -42,26 +42,9 @@ CREATE TABLE `answers` (
 --
 
 INSERT INTO `answers` (`id`, `question_id`, `user_id`, `content`, `parent_id`, `created_at`, `updated_at`) VALUES
-(1, 2, 3, 'bài viết hay và bổ ích', NULL, '2024-07-19 02:33:28', '2024-07-19 02:33:28'),
-(2, 2, 3, 'Khá hay', 1, '2024-07-19 02:46:23', '2024-07-19 02:46:23'),
-(3, 2, 3, 'cmt lần 3', NULL, '2024-07-19 03:13:54', '2024-07-19 03:13:54'),
-(4, 1, 3, 'sad', NULL, '2024-07-19 04:03:54', '2024-07-19 04:03:54'),
-(5, 2, 3, 'cmt bên trong lần 3', 3, '2024-07-19 04:12:44', '2024-07-19 04:12:44'),
-(6, 2, 3, 'lần nữa', 3, '2024-07-19 04:13:34', '2024-07-19 04:13:34'),
-(7, 1, 3, 'bài viết hay và bổ ích', 4, '2024-07-19 11:11:50', '2024-07-19 11:11:50'),
-(8, 1, 3, 'test', NULL, '2024-07-20 01:10:21', '2024-07-20 01:10:21'),
-(9, 1, 3, 'Khá hay', NULL, '2024-07-20 01:15:10', '2024-07-20 01:15:10'),
-(10, 8, 3, 'test cmt', NULL, '2024-07-20 02:47:58', '2024-07-20 02:47:58'),
-(11, 2, 3, 'dưới lẫn nữa', 3, '2024-07-20 05:53:56', '2024-07-20 05:53:56'),
-(12, 2, 3, 'sau cùng', NULL, '2024-07-20 05:54:43', '2024-07-20 05:54:43'),
-(13, 10, 16, '1', NULL, '2024-07-20 10:44:54', '2024-07-20 10:44:54'),
-(17, 10, 16, '2', 13, '2024-07-20 10:47:57', '2024-07-20 10:47:57'),
-(19, 10, 16, '3', 17, '2024-07-20 11:11:12', '2024-07-20 11:11:12'),
-(20, 10, 16, '234', 17, '2024-07-20 11:23:06', '2024-07-20 11:23:06'),
-(21, 10, 16, '12', 13, '2024-07-20 11:23:30', '2024-07-20 11:23:30'),
-(22, 2, 16, '2', 6, '2024-07-20 12:20:38', '2024-07-20 12:20:38'),
-(23, 10, 3, 'trả lời 3', 19, '2024-07-20 13:30:51', '2024-07-20 13:30:51'),
-(24, 10, 3, '2', NULL, '2024-07-20 15:01:13', '2024-07-20 15:01:13');
+(26, 17, 3, 'bài viết hay', NULL, '2024-07-21 09:20:24', '2024-07-21 09:20:24'),
+(27, 17, 4, 'like', 26, '2024-07-21 09:21:43', '2024-07-21 09:21:43'),
+(28, 17, 4, 'hay', NULL, '2024-07-21 09:21:55', '2024-07-21 09:21:55');
 
 -- --------------------------------------------------------
 
@@ -100,7 +83,8 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
 (1, 'HTML', 'html', NULL, NULL),
-(2, 'CSS', 'css', NULL, NULL);
+(2, 'CSS', 'css', NULL, NULL),
+(3, 'Ngôn ngữ lập trình', 'ngon-ngu-lap-trinh', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -170,16 +154,6 @@ CREATE TABLE `likes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `likes`
---
-
-INSERT INTO `likes` (`id`, `like`, `user_id`, `question_id`, `created_at`, `updated_at`) VALUES
-(7, 1, 3, 2, '2024-07-19 10:40:01', '2024-07-19 10:40:01'),
-(15, 1, 4, 1, '2024-07-19 13:14:59', '2024-07-19 13:14:59'),
-(16, 1, 15, 1, '2024-07-19 15:01:52', '2024-07-19 15:01:52'),
-(26, 1, 3, 1, '2024-07-20 08:02:14', '2024-07-20 08:02:14');
 
 -- --------------------------------------------------------
 
@@ -273,15 +247,10 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`id`, `title`, `content`, `viewcount`, `category_id`, `user_id`, `issolved`, `rate`, `likecount`, `dislikecount`, `created_at`, `updated_at`, `slug`, `hashtag_id`) VALUES
-(1, 'HTML là gì?', 'HTML là một ngôn ngữ đánh dấu được thiết kế ra để tạo nên các trang web trên World Wide Web. Nó có thể được trợ giúp bởi các công nghệ như CSS và các ngôn ngữ kịch bản giống như JavaScript có đúng không?', 149, 1, 1, 0, NULL, 0, 0, '2024-07-20 01:10:21', '2024-07-21 04:42:02', 'html-la-gi', 1),
-(2, 'CSS là gì', 'Trong tin học, các tập tin định kiểu theo tầng – dịch từ tiếng Anh là Cascading Style Sheets – được dùng để miêu tả cách trình bày các tài liệu viết bằng ngôn ngữ HTML và XHTML. Ngoài ra ngôn ngữ định kiểu theo tầng cũng có thể dùng cho XML, SVG, XUL có phải không?', 281, 2, 1, 0, NULL, 0, 0, '2024-07-18 00:00:03', '2024-07-20 13:04:13', 'css-la-gi', 1),
-(6, 'PHP là gì?', 'PHP: Hypertext Preprocessor, thường được viết tắt thành PHP là một ngôn ngữ lập trình kịch bản hay một loại mã lệnh chủ yếu được dùng để phát triển các ứng dụng viết cho máy chủ, mã nguồn mở, dùng cho mục đích tổng quát. Nó rất thích hợp với web và có thể dễ dàng nhúng vào trang HTML có phải không?', 13, 1, 1, 0, NULL, 0, 0, '2024-07-18 00:40:12', '2024-07-20 06:06:16', 'php-la-gi', 1),
-(8, 'SASS là gì?', '<p style=\"margin-left:0px; margin-right:0px\"><strong>SASS </strong>(<em>Syntactically Awesome Style Sheets</em>)&nbsp;là một tiện ích mở rộng của CSS. Các ngôn ngữ style sheet kiểm soát vị trí và cách thức văn bản hiển thị trên webpage, từ kích thước và màu sắc khung cho đến vị trí của menu.</p>\r\n\r\n<p style=\"margin-left:0px; margin-right:0px\"><strong>CSS</strong> được sử dụng trên hầu hết các trang web, thiết kế để giúp các developer viết lệnh hiển thị văn bản trên màn hình. CSS không được xây dựng để làm việc với các biến số hay thực hiện nhiều tác vụ phức tạp. SASS/SCSS chính là giải pháp giải quyết những khuyết điểm của CSS, giúp các developer tiết kiệm thời gian và công sức cho những dự án của mình.</p>', 21, 2, 3, 0, NULL, 0, 0, '2024-07-19 01:12:39', '2024-07-20 14:58:32', 'sass-la-gi', 2),
-(9, 'User 3 test đăng bài', '<p><em><strong>Tôi là user 3</strong></em></p>\r\n\r\n<p><em><strong><img alt=\"\" src=\"https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/01/anh-nen-cute.jpg\" style=\"height:628px; width:1200px\" />hehehe!!!</strong></em></p>', 31, 2, 11, 0, NULL, 0, 0, '2024-07-20 08:22:16', '2024-07-21 01:21:55', 'user-3-test-dang-bai', 1),
-(10, 'User 3 lần 2', '<p>ảnh đẹp nè mn!!</p>\r\n\r\n<p><img alt=\"\" src=\"https://png.pngtree.com/thumb_back/fh260/background/20230613/pngtree-an-image-of-a-forest-in-the-clear-water-with-rocks-image_2908357.jpg\" /></p>', 97, 2, 11, 0, NULL, 0, 0, '2024-07-20 08:36:12', '2024-07-21 04:41:51', 'user-3-lan-2', 3),
-(11, 'css 1', '<p>sasddsa</p>', 0, 2, 3, 0, NULL, 0, 0, '2024-07-21 01:42:54', '2024-07-21 01:42:54', 'css-1', 1),
-(12, 'css2', '<p>a</p>', 0, 2, 3, 0, NULL, 0, 0, '2024-07-21 01:43:23', '2024-07-21 01:43:23', 'css2', 1),
-(13, 'HTML là gì', '<p>test slug bị trùng</p>', 2, 1, 3, 0, NULL, 0, 0, '2024-07-21 02:08:40', '2024-07-21 04:41:56', 'html-la-gi-AuGiN', 1);
+(8, 'SASS là gì?', '<p style=\"margin-left:0px; margin-right:0px\"><strong>SASS </strong>(<em>Syntactically Awesome Style Sheets</em>)&nbsp;là một tiện ích mở rộng của CSS. Các ngôn ngữ style sheet kiểm soát vị trí và cách thức văn bản hiển thị trên webpage, từ kích thước và màu sắc khung cho đến vị trí của menu.</p>\r\n\r\n<p style=\"margin-left:0px; margin-right:0px\"><strong>CSS</strong> được sử dụng trên hầu hết các trang web, thiết kế để giúp các developer viết lệnh hiển thị văn bản trên màn hình. CSS không được xây dựng để làm việc với các biến số hay thực hiện nhiều tác vụ phức tạp. SASS/SCSS chính là giải pháp giải quyết những khuyết điểm của CSS, giúp các developer tiết kiệm thời gian và công sức cho những dự án của mình.</p>', 22, 2, 3, 0, NULL, 0, 0, '2024-07-19 01:12:39', '2024-07-21 09:11:35', 'sass-la-gi', 2),
+(14, 'CSS là gì?', '<p><span style=\"color:rgb(77, 81, 86); font-family:arial,sans-serif; font-size:14px\">Trong tin học, các tập tin định kiểu theo tầng – dịch từ tiếng Anh là Cascading Style Sheets – được dùng để miêu tả cách trình bày các tài liệu viết bằng ngôn ngữ HTML và XHTML. Ngoài ra ngôn ngữ định kiểu theo tầng cũng có thể dùng cho XML, SVG, XUL có phải không?</span></p>', 0, 2, 3, 0, NULL, 0, 0, '2024-07-21 09:12:22', '2024-07-21 09:12:22', 'css-la-gi', 1),
+(15, 'HTML là gì?', '<p><span style=\"color:rgb(77, 81, 86); font-family:arial,sans-serif; font-size:14px\">HTML là một ngôn ngữ đánh dấu được thiết kế ra để tạo nên các trang web trên World Wide Web. </span></p>\r\n\r\n<p><span style=\"color:rgb(77, 81, 86); font-family:arial,sans-serif; font-size:14px\"><img alt=\"\" src=\"https://laptop88.vn/media/news/2402_HTML-la-gi-thong-tin-tong-quat-ve-HTML-03.jpg\" /></span></p>\r\n\r\n<p><span style=\"color:rgb(77, 81, 86); font-family:arial,sans-serif; font-size:14px\">Nó có thể được trợ giúp bởi các công nghệ như CSS và các ngôn ngữ kịch bản giống như JavaScript có phải không</span></p>', 1, 1, 3, 0, NULL, 0, 0, '2024-07-21 09:13:24', '2024-07-21 10:04:47', 'html-la-gi', 1),
+(17, 'Ngôn ngữ PHP', '<p>PHP (PHP: Hypertext Preprocessor) là một ngôn ngữ lập trình kịch bản phổ biến và được sử dụng rộng rãi, đặc biệt trong lập trình web. Dưới đây là một số đánh giá về ngôn ngữ lập trình PHP:</p>\r\n\r\n<p><img alt=\"\" src=\"https://d3hi6wehcrq5by.cloudfront.net/itnavi-blog/2020/05/uu-diem-va-nhuoc-diem-cua-php.jpg\" style=\"height:329px; width:500px\" /></p>\r\n\r\n<ul>\r\n	<li>Dễ học và thân thiện với người dùng:</li>\r\n</ul>\r\n\r\n<p>PHP được thiết kế để dễ học và sử dụng, đặc biệt đối với những lập trình viên mới bắt đầu.<br />\r\nCú pháp của PHP tương đối đơn giản và dễ hiểu, giúp người dùng nhanh chóng làm quen.</p>\r\n\r\n<ul>\r\n	<li>Phù hợp cho lập trình web:</li>\r\n</ul>\r\n\r\n<p>PHP được thiết kế chủ yếu để xây dựng các ứng dụng web, từ trang web đơn giản đến các ứng dụng web phức tạp.<br />\r\nVới sự hỗ trợ mạnh mẽ từ các framework như Laravel, Symfony, CodeIgniter, ... PHP trở thành một lựa chọn tuyệt vời cho lập trình web.</p>\r\n\r\n<ul>\r\n	<li>Đa nền tảng và tích hợp tốt:</li>\r\n</ul>\r\n\r\n<p>PHP chạy được trên nhiều nền tảng khác nhau như Windows, Linux, macOS.<br />\r\nPHP có thể tích hợp dễ dàng với các công nghệ web khác như HTML, CSS, JavaScript, SQL, v.v.</p>\r\n\r\n<ul>\r\n	<li>Cộng đồng và hệ sinh thái phong phú:</li>\r\n</ul>\r\n\r\n<p>PHP có một cộng đồng lập trình viên rất lớn và hoạt động sôi nổi, cung cấp nhiều tài nguyên, thư viện và công cụ hữu ích.<br />\r\nCó nhiều framework, CMS (WordPress, Drupal, Joomla) và các ứng dụng được xây dựng bằng PHP.</p>\r\n\r\n<ul>\r\n	<li>Hiệu suất và tốc độ:</li>\r\n</ul>\r\n\r\n<p>PHP có hiệu suất tương đối tốt, đặc biệt khi sử dụng các framework và công cụ cải thiện hiệu năng.<br />\r\nTuy nhiên, so với một số ngôn ngữ lập trình khác như Java hoặc Go, PHP vẫn còn chậm hơn về tốc độ xử lý.</p>', 5, 3, 3, 0, NULL, 0, 0, '2024-07-21 09:19:58', '2024-07-21 09:21:55', 'ngon-ngu-php', 3);
 
 -- --------------------------------------------------------
 
@@ -310,15 +279,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `phonenumber`, `gender`, `birthday`, `isadmin`, `remember_token`, `created_at`, `updated_at`, `point`) VALUES
-(1, 'Admin Y', 'admin1', 'admin@gmail.com', '123456', '0822293069', 1, '2002-04-17', 1, NULL, NULL, NULL, 0),
-(3, 'Minh Ý edit2', 'user1', 'user1edit@gmail.com', '$2y$12$TsonjCS1YbqD0b0j/2wyVuUPwzF8iG6ojChP.6aK3nYRECkQr2e0m', '0822293069', 0, '2002-12-04', 0, NULL, '2024-07-18 13:03:12', '2024-07-20 14:01:57', 0),
-(4, 'User Ý 2', 'user2', 'user2@gmail.com', '$2y$12$Ft2LJz.U/.r6stofBfxwVur40ZcdjfGa3AsFNS8U2iWI2Dug8CmWu', '01202652218', 1, '2002-12-04', 0, NULL, '2024-07-18 13:04:24', '2024-07-19 13:03:58', 2),
-(11, 'User Ý 3', 'user3', 'user3@gmail.com', '$2y$12$FZLklrcK4T6VCQSx60NHxObtR8D7PrdDLoOsldhfcNAd7cdyRu5Ka', '010101010', 1, '2002-11-11', 0, NULL, '2024-07-19 14:37:31', '2024-07-19 14:37:31', 0),
-(12, 'User Ý 4', 'user4', 'user4@gmail.com', '$2y$12$WMKsMx/0dHz8KE8uy0KBkOS/y.Lkzl6S/vr43vaUA1R56tYvMkR/e', '010010101', 1, '2000-11-11', 0, NULL, '2024-07-19 14:51:13', '2024-07-19 14:51:13', 0),
-(15, 'User Ý 5', 'user5', 'user5@gmail.com', '$2y$12$kexP4gI0nmtM2eXvAKj3TO0VSV/01F2SMjWtMR43WwS3OQDQis0.u', '0822293069', 1, '2000-11-11', 0, NULL, '2024-07-19 15:01:23', '2024-07-19 15:01:23', 0),
-(16, 'My Duyen', 'myduyen', 'duyen@gmail.com', '$2y$12$4XiwqVshVbXKzlYYArC1uOQqhKiIg7A40vnYa/D12y6yOM8/lx1iG', '0100010101', 0, '2002-02-01', 0, NULL, '2024-07-20 09:35:37', '2024-07-20 09:35:37', 0),
-(17, 'Mỹ Duyên', 'duyen', 'asd@gmail.com', '$2y$12$33flcWAe5v2XTJBxbC1xFeOWUe0Ck8CewAK5pnp/jAv/2TNTgDyte', '0822293069a', 1, '1111-11-11', 0, NULL, '2024-07-21 02:23:07', '2024-07-21 02:23:07', 0),
-(19, 'Mỹ Duyên 2', 'duyen2', 'shyneddy2002@gmail.com', '$2y$12$4965QwA5MbWwedPfV2t9le83vHC6gNze3uyd4szrsR038xe7Nuz1e', '0822293069', 0, '2002-02-01', 0, NULL, '2024-07-21 06:16:27', '2024-07-21 06:16:27', 0);
+(3, 'Minh Ý', 'user1', 'user1@gmail.com', '$2y$12$PRL.uy/kY/sGj/Fo5sFNtO48UbD4xIUnAhcltr8wwCrW9DZgwjoK2', '0822293069', 1, '2002-12-04', 0, NULL, '2024-07-18 13:03:12', '2024-07-21 09:20:56', 0),
+(4, 'Nguyễn Minh Ý', 'user2', 'user2@gmail.com', '$2y$12$bRIRQm3.FhOUq36X/1ZhFOMxwi3qbj.dlGkU8080dyFf/EzED/T3e', '01202652218', 1, '2002-12-04', 0, NULL, '2024-07-18 13:04:24', '2024-07-21 09:21:19', 2);
 
 --
 -- Indexes for dumped tables
@@ -418,7 +380,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `blogs`
@@ -430,7 +392,7 @@ ALTER TABLE `blogs`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `contacts`
@@ -472,7 +434,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `users`
